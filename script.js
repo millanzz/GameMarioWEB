@@ -21,7 +21,7 @@ const loop = setInterval(() => {
         pipe.style.animation = 'none';
         pipe.style.buttom = `${marioPosition}px`;
 
-        mario.src = './imagens/game-over.png';
+        mario.src = 'game-over.png';
         mario.style.width = '100px'
         mario.style.marginLeft = '50px'
         mario.classList.add('jump');
@@ -32,3 +32,4 @@ const loop = setInterval(() => {
 },10);
 
 document.addEventListener('keydown', jump);
+
