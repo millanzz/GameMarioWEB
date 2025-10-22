@@ -1,7 +1,7 @@
 # 🎮 Jogo Web do Mario
 
 Este repositório contém uma recriação simples e divertida do clássico **jogo do Mario**, desenvolvida com **HTML**, **CSS** e **JavaScript** para rodar diretamente no navegador.
-
+https://millanzz.github.io/GameMarioWEB/
 ---
 
 ## 🕹️ Funcionalidades
