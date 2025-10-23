@@ -38,6 +38,15 @@ width: 550px;
 animation: nuvem_animation 20s infinite linear;
 }
 
+.score {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    font-family: 'Press Start 2P', cursive;
+    color: #333;
+}
+
 @keyframes pipe_animation {
     from{
         right: -80px;
