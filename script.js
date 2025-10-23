@@ -41,8 +41,12 @@ const loop = setInterval(() => {
         isGameOver = true; // marca que o jogo acabou
         clearInterval(loop); // para o loop principal
 
+        const gameOverImage = document.querySelector('.game-over');
+
+        gameOverImage.style.display = 'block';
+        
         // Mostra mensagem de fim de jogo
-        scoreElement.textContent = `GAME OVER! Score final: ${score}`;
+        scoreElement.textContent = `Score final: ${score}`;
 
         document.addEventListener('keydown', () => location.reload()); // reinicia o jogo ao pressionar qualquer tecla
     } else if (!isGameOver) {
@@ -56,5 +60,6 @@ const loop = setInterval(() => {
 
 // Detecta qualquer tecla pressionada para fazer o Mario pular
 document.addEventListener('keydown', jump);
+
 
 
