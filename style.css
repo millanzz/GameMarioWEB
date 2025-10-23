@@ -6,35 +6,6 @@ box-sizing: border-box;
 
 .game-board{
 width: 100%;
-height: 500px;
-border-bottom: 15px solid #7cfc00;
-margin: 0 auto;
-position: relative;
-overflow: hidden;
-background: linear-gradient(#87ceeb, #e0f6ff);
-}
-
-.pipe{
-position: absolute;
-bottom: 0;
-width: 80px;
-animation: pipe_animation 1.5s infinite linear;
-
-}
-
-.mario{
-width: 150px;
-position: absolute;
-bottom: 0;
-}
-*{
-margin:0;
-padding: 0;
-box-sizing: border-box;
-}
-
-.game-board{
-width: 100%;
 height: 88.80vh; 
 margin: 0 auto;
 position: relative;
@@ -72,64 +43,6 @@ bottom: 0;
 z-index: 2;
 }
 
-.jump{
-    animation: jump 500ms ease-out;
-}
-
-.nuvem{
-position: absolute;
-width: 550px;
-animation: nuvem_animation 20s infinite linear;
-}
-
-.score {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 28px;
-    font-family: 'Press Start 2P', cursive;
-    color: #333;
-}
-
-@keyframes pipe_animation {
-    from{
-        right: -80px;
-    }
-
-    to{
-        right: 100%;
-    }
-}
-
-@keyframes jump {
-
-    0%{
-        bottom: 0;
-    }
-    40%{
-        bottom: 180px;
-    }
-    50%{
-        bottom: 180px;
-    }
-    60%{
-        bottom: 180px;
-    }
-    100%{
-        bottom: 0px;
-    }
-
-}
-
-@keyframes nuvem_animation {
-    from{
-        right: -550px;
-    }
-
-    to{
-        right: 100%;
-    }
-}
 .jump{
     animation: jump 500ms ease-out;
 }
