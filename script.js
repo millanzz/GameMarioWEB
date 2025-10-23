@@ -3,6 +3,14 @@ const mario = document.querySelector('.mario'); // imagem do Mario
 const pipe = document.querySelector('.pipe');   // imagem do cano
 const scoreElement = document.querySelector('.score'); // área onde mostraremos a pontuação
 
+const bgMusic = document.getElementById('music');
+
+document.addEventListener('keydown', () => {
+    if (!isGameOver && bgMusic.paused) {
+        bgMusic.play();
+    }
+});
+
 let score = 0;           // variável que guarda a pontuação
 let isGameOver = false;  // controle para saber se o jogo acabou
 
@@ -48,6 +56,9 @@ const loop = setInterval(() => {
         // Mostra mensagem de fim de jogo
         scoreElement.textContent = `Score final: ${score}`;
 
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+
         document.addEventListener('keydown', () => location.reload()); // reinicia o jogo ao pressionar qualquer tecla
     } else if (!isGameOver) {
         // Se o jogo ainda estiver ativo, aumenta a pontuação
@@ -60,6 +71,7 @@ const loop = setInterval(() => {
 
 // Detecta qualquer tecla pressionada para fazer o Mario pular
 document.addEventListener('keydown', jump);
+
 
 
 
