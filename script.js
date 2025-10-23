@@ -34,7 +34,7 @@ const loop = setInterval(() => {
         pipe.style.animation = 'none'; // para a animação do cano
         pipe.style.left = `${pipePosition}px`; // congela o cano na posição atual
 
-        mario.src = './imagens/game-over.png'; // troca a imagem do Mario
+        mario.src = 'game-over.png'; // troca a imagem do Mario
         mario.style.width = '100px';
         mario.style.marginLeft = '50px';
 
@@ -56,3 +56,4 @@ const loop = setInterval(() => {
 
 // Detecta qualquer tecla pressionada para fazer o Mario pular
 document.addEventListener('keydown', jump);
+
