@@ -71,6 +71,7 @@ const loop = setInterval(() => {
 
 // Detecta qualquer tecla pressionada para fazer o Mario pular
 document.addEventListener('keydown', jump);
+document.addEventListener('touchstart', jump);
 
 
 
