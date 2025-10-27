@@ -66,7 +66,6 @@ function startLoops() {
 
             isGameOver = true;
             clearInterval(loop);
-            clearInterval(difficultyIncrease);
 
             gameOverImage.style.display = 'block';
             startBtn.style.top = "60%";
@@ -99,3 +98,4 @@ addGameControls(jump);
 
 // === Botão Iniciar / Reiniciar ===
 startBtn.addEventListener('click', startGame);
+
