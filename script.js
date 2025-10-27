@@ -5,7 +5,7 @@ const scoreElement = document.querySelector('.score'); // área onde mostraremos
 
 const bgMusic = document.getElementById('music');
 
-document.addEventListener('keydown', () => {
+addEventListener(() => {
     if (!isGameOver && bgMusic.paused) {
         bgMusic.play();
     }
@@ -81,4 +81,5 @@ function addEventListener(func) {
 }
 
 addEventListener(jump);
+
 
