@@ -1,70 +1,92 @@
-// Seleciona os elementos do HTML
+// === Seleção dos elementos ===
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const scoreElement = document.querySelector('.score');
 const bgMusic = document.getElementById('music');
 const gameOverImage = document.querySelector('.game-over');
+const startBtn = document.getElementById('start-btn');
 
+// === Variáveis de controle ===
 let score = 0;
 let isGameOver = false;
+let gameStarted = false;
+let loop;
 
-//  Toca a música de fundo ao pressionar tecla ou tocar na tela
-addGameControls(() => {
-    if (!isGameOver && bgMusic.paused) bgMusic.play();
-});
+// === Inicia ou reinicia o jogo ===
+function startGame() {
+    score = 0;
+    isGameOver = false;
+    gameStarted = true;
 
-// Função de pulo
+    scoreElement.textContent = "Score: 0";
+    gameOverImage.style.display = 'none';
+
+    // Reseta posições
+    pipe.style.left = '';
+    mario.src = './imagens/mario.gif';
+    mario.style.width = '150px';
+    mario.style.marginLeft = '0';
+
+    startBtn.style.display = 'none';
+
+    bgMusic.currentTime = 0;
+    bgMusic.play();
+
+    clearInterval(loop);
+
+    startLoops();
+}
+
+// === Pulo do Mario ===
 const jump = () => {
-    if (isGameOver) return;
+    if (!gameStarted || isGameOver) return;
     mario.classList.add('jump');
     setTimeout(() => mario.classList.remove('jump'), 500);
 };
 
-// Atualiza o placar
+// === Atualiza o placar ===
 const updateScore = () => {
     scoreElement.textContent = `Score: ${score}`;
 };
 
-// Loop principal — detecta colisão e pontuação
-const loop = setInterval(() => {
-    const pipePosition = pipe.offsetLeft;
-    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
+// === Loop principal e de colisão ===
+function startLoops() {
+    loop = setInterval(() => {
+        const pipePosition = pipe.offsetLeft;
+        const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
 
-    // Detecta colisão
-    if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
-        // Para animação
-        pipe.style.animation = 'none';
-        pipe.style.left = `${pipePosition}px`;
+        // Colisão
+        if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
+            pipe.style.animation = 'none';
+            pipe.style.left = `${pipePosition}px`;
 
-        mario.src = 'game-over.png';
-        mario.style.width = '100px';
-        mario.style.marginLeft = '50px';
+            mario.src = './imagens/game-over.png';
+            mario.style.width = '100px';
+            mario.style.marginLeft = '50px';
 
-        isGameOver = true;
-        clearInterval(loop);
+            isGameOver = true;
+            clearInterval(loop);
+            clearInterval(difficultyIncrease);
 
-        // Mostra imagem de Game Over
-        gameOverImage.style.display = 'block';
-        scoreElement.textContent = `Score final: ${score}`;
+            gameOverImage.style.display = 'block';
+            startBtn.style.top = "60%";
+            startBtn.textContent = "🔁 Reset";
+            startBtn.style.display = 'block';
 
-        // Para música
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
+            bgMusic.pause();
+            bgMusic.currentTime = 0;
+        } 
+        // Pontuação e aceleração
+        else if (!isGameOver) {
+            score++;
+            updateScore();
 
-        // Permite reiniciar o jogo
-        addGameControls(() => location.reload());
-    } 
-    else if (!isGameOver) {
-        // Aumenta a pontuação
-        score++;
-        updateScore();
-        
-    }
-}, 10);
+        }
+    }, 10);
 
+}
 
-
-//  Função que adiciona controles do jogador
+// === Controles do jogador ===
 function addGameControls(func) {
     document.addEventListener('keydown', (event) => {
         if (event.code === "Space") func();
@@ -75,4 +97,5 @@ function addGameControls(func) {
 
 addGameControls(jump);
 
-
+// === Botão Iniciar / Reiniciar ===
+startBtn.addEventListener('click', startGame);
