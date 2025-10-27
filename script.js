@@ -8,13 +8,6 @@ const gameOverImage = document.querySelector('.game-over');
 let score = 0;
 let isGameOver = false;
 
-// Controle de velocidade do cano
-let pipeSpeed = 1.5; 
-const pipeSpeedMin = 0.9;
-
-// Aplica a velocidade inicial da animação
-pipe.style.animation = `pipe_animation ${pipeSpeed}s linear infinite`;
-
 //  Toca a música de fundo ao pressionar tecla ou tocar na tela
 addGameControls(() => {
     if (!isGameOver && bgMusic.paused) bgMusic.play();
@@ -81,3 +74,4 @@ function addGameControls(func) {
 }
 
 addGameControls(jump);
+
