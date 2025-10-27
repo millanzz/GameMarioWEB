@@ -59,7 +59,7 @@ const loop = setInterval(() => {
         bgMusic.pause();
         bgMusic.currentTime = 0;
 
-        document.addEventListener('keydown', () => location.reload()); // reinicia o jogo ao pressionar qualquer tecla
+        addEventListener(() => location.reload()); // reinicia o jogo ao pressionar qualquer tecla
     } else if (!isGameOver) {
         // Se o jogo ainda estiver ativo, aumenta a pontuação
         score += 1;
@@ -81,3 +81,4 @@ function addEventListener(func) {
 }
 
 addEventListener(jump);
+
