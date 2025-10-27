@@ -80,6 +80,7 @@ function startLoops() {
             score++;
             updateScore();
 
+           
         }
     }, 10);
 
@@ -98,5 +99,3 @@ addGameControls(jump);
 
 // === Botão Iniciar / Reiniciar ===
 startBtn.addEventListener('click', startGame);
-
-
