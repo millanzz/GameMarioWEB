@@ -1,85 +1,83 @@
 // Seleciona os elementos do HTML
-const mario = document.querySelector('.mario'); // imagem do Mario
-const pipe = document.querySelector('.pipe');   // imagem do cano
-const scoreElement = document.querySelector('.score'); // área onde mostraremos a pontuação
-
+const mario = document.querySelector('.mario');
+const pipe = document.querySelector('.pipe');
+const scoreElement = document.querySelector('.score');
 const bgMusic = document.getElementById('music');
+const gameOverImage = document.querySelector('.game-over');
 
-addEventListener(() => {
-    if (!isGameOver && bgMusic.paused) {
-        bgMusic.play();
-    }
+let score = 0;
+let isGameOver = false;
+
+// Controle de velocidade do cano
+let pipeSpeed = 1.5; 
+const pipeSpeedMin = 0.9;
+
+// Aplica a velocidade inicial da animação
+pipe.style.animation = `pipe_animation ${pipeSpeed}s linear infinite`;
+
+//  Toca a música de fundo ao pressionar tecla ou tocar na tela
+addGameControls(() => {
+    if (!isGameOver && bgMusic.paused) bgMusic.play();
 });
 
-let score = 0;           // variável que guarda a pontuação
-let isGameOver = false;  // controle para saber se o jogo acabou
-
-// Função responsável por fazer o Mario "pular"
+// Função de pulo
 const jump = () => {
-    if (isGameOver) return; // impede o pulo se o jogo acabou
-
-    mario.classList.add('jump'); // adiciona a classe que aplica a animação de pulo
-
-    // remove a classe depois de 500ms (tempo do pulo)
-    setTimeout(() => {
-        mario.classList.remove('jump');
-    }, 500);
+    if (isGameOver) return;
+    mario.classList.add('jump');
+    setTimeout(() => mario.classList.remove('jump'), 500);
 };
 
-// Função para atualizar o placar
+// Atualiza o placar
 const updateScore = () => {
-    // Atualiza o texto do placar
     scoreElement.textContent = `Score: ${score}`;
 };
 
-// Cria um loop que roda a cada 10ms (para verificar colisão e atualizar pontuação)
+// Loop principal — detecta colisão e pontuação
 const loop = setInterval(() => {
-    const pipePosition = pipe.offsetLeft; // posição do cano no eixo X
-    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', ''); // posição vertical do Mario
+    const pipePosition = pipe.offsetLeft;
+    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
 
-    // Detecta colisão: quando o cano está perto e o Mario está baixo
+    // Detecta colisão
     if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
-        pipe.style.animation = 'none'; // para a animação do cano
-        pipe.style.left = `${pipePosition}px`; // congela o cano na posição atual
+        // Para animação
+        pipe.style.animation = 'none';
+        pipe.style.left = `${pipePosition}px`;
 
-        mario.src = 'game-over.png'; // troca a imagem do Mario
+        mario.src = './imagens/game-over.png';
         mario.style.width = '100px';
         mario.style.marginLeft = '50px';
 
-        isGameOver = true; // marca que o jogo acabou
-        clearInterval(loop); // para o loop principal
+        isGameOver = true;
+        clearInterval(loop);
 
-        const gameOverImage = document.querySelector('.game-over');
-
+        // Mostra imagem de Game Over
         gameOverImage.style.display = 'block';
-        
-        // Mostra mensagem de fim de jogo
         scoreElement.textContent = `Score final: ${score}`;
 
+        // Para música
         bgMusic.pause();
         bgMusic.currentTime = 0;
 
-        addEventListener(() => location.reload()); // reinicia o jogo ao pressionar qualquer tecla
-    } else if (!isGameOver) {
-        // Se o jogo ainda estiver ativo, aumenta a pontuação
-        score += 1;
-        updateScore(); // atualiza o texto na tela
-
+        // Permite reiniciar o jogo
+        addGameControls(() => location.reload());
+    } 
+    else if (!isGameOver) {
+        // Aumenta a pontuação
+        score++;
+        updateScore();
+        
     }
-     
 }, 10);
 
 
-function addEventListener(func) {
+
+//  Função que adiciona controles do jogador
+function addGameControls(func) {
     document.addEventListener('keydown', (event) => {
-        if (event.code === "Space") {
-            func();
-        }
+        if (event.code === "Space") func();
     });
     document.addEventListener('touchstart', func);
     document.addEventListener('touchbegan', func);
 }
 
-addEventListener(jump);
-
-
+addGameControls(jump);
