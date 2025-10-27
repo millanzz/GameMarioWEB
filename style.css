@@ -28,35 +28,6 @@ background: linear-gradient(#87ceeb, #e0f6ff);
     z-index: 0; /* fica atrás dos personagens */
 }
 
-/* Botao de start e reset */
-#start-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px 40px;
-    font-size: 24px;
-    font-family: 'Press Start 2P', cursive;
-    background-color: #0077ff;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    z-index: 20;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    transition: transform 0.1s ease, background 0.2s;
-}
-
-#start-btn:hover {
-    background-color: #293b5e;
-    transform: translate(-50%, -50%) scale(1.05);
-}
-
-#start-btn:active {
-    transform: translate(-50%, -50%) scale(0.95);
-}
-
-
 .pipe{
 position: absolute;
 bottom: 0;
@@ -148,5 +119,6 @@ animation: nuvem_animation 20s infinite linear;
         right: 100%;
     }
 }
+
 
 
