@@ -12,14 +12,21 @@ let isGameOver = false;
 let gameStarted = false;
 let loop;
 
+// === Velocidade inicial do cano ===
+let pipeSpeed = 1.5; 
+const pipeSpeedMin = 0.9;
+pipe.style.animation = `pipe_animation ${pipeSpeed}s linear infinite`;
+
 // === Inicia ou reinicia o jogo ===
 function startGame() {
     score = 0;
     isGameOver = false;
     gameStarted = true;
+    pipeSpeed = 1.5;
 
     scoreElement.textContent = "Score: 0";
     gameOverImage.style.display = 'none';
+    pipe.style.animation = `pipe_animation ${pipeSpeed}s linear infinite`;
 
     // Reseta posições
     pipe.style.left = '';
@@ -33,6 +40,7 @@ function startGame() {
     bgMusic.play();
 
     clearInterval(loop);
+
 
     startLoops();
 }
@@ -80,7 +88,7 @@ function startLoops() {
             score++;
             updateScore();
 
-           
+        
         }
     }, 10);
 
