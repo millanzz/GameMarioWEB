@@ -23,7 +23,7 @@ function startGame() {
 
     // Reseta posições
     pipe.style.left = '';
-    mario.src = './imagens/mario.gif';
+    mario.src = 'mario.gif';
     mario.style.width = '150px';
     mario.style.marginLeft = '0';
 
@@ -60,7 +60,7 @@ function startLoops() {
             pipe.style.animation = 'none';
             pipe.style.left = `${pipePosition}px`;
 
-            mario.src = './imagens/game-over.png';
+            mario.src = 'game-over.png';
             mario.style.width = '100px';
             mario.style.marginLeft = '50px';
 
@@ -98,4 +98,5 @@ addGameControls(jump);
 
 // === Botão Iniciar / Reiniciar ===
 startBtn.addEventListener('click', startGame);
+
 
