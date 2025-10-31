@@ -43,6 +43,8 @@ function startGame() {
     // reinicia música
     bgMusic.currentTime = 0;
     bgMusic.play();
+    deathSound.pause();
+    deathSound.currentTime = 0;
 
     // remove botão
     startBtn.style.display = 'none';
@@ -126,4 +128,5 @@ addGameControls(jump);
 
 // Clique do botão de Start / Reset
 startBtn.addEventListener('click', startGame);
+
 
