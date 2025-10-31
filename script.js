@@ -2,8 +2,9 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const scoreElement = document.querySelector('.score');
-const bgMusic = document.getElementById('music');
 const gameOverImage = document.querySelector('.game-over');
+const bgMusic = document.getElementById('music');
+const deathSound = document.getElementById('deathSound');
 
 // Botão de iniciar/reiniciar o jogo
 const startBtn = document.getElementById('start-btn');
@@ -95,6 +96,9 @@ const loop = setInterval(() => {
         bgMusic.pause();
         bgMusic.currentTime = 0;
 
+        deathSound.currentTime = 0.8;
+        deathSound.play();
+
         // mostra botão de reset
         startBtn.textContent = "🔁 Reset";
         startBtn.style.top = '60%';
@@ -122,3 +126,4 @@ addGameControls(jump);
 
 // Clique do botão de Start / Reset
 startBtn.addEventListener('click', startGame);
+
