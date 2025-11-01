@@ -5,6 +5,7 @@ const scoreElement = document.querySelector('.score');
 const gameOverImage = document.querySelector('.game-over');
 const bgMusic = document.getElementById('music');
 const deathSound = document.getElementById('deathSound');
+const nomeMario = document.querySelector('.name-game');
 
 // Botão de iniciar/reiniciar o jogo
 const startBtn = document.getElementById('start-btn');
@@ -29,6 +30,7 @@ function startGame() {
 
     // limpa tela de game over
     gameOverImage.style.display = 'none';
+    nomeMario.style.display = 'none';
 
     // reseta pipe
     pipe.style.animation = 'pipe_animation 1.5s linear infinite';
@@ -36,7 +38,7 @@ function startGame() {
     pipe.style.display = 'block'; // mostra o pipe
 
     // reseta mario
-    mario.src = 'mario.gif';
+    mario.src = './imagens/mario.gif';
     mario.style.width = '150px';
     mario.style.marginLeft = '0';
 
@@ -85,7 +87,7 @@ const loop = setInterval(() => {
         pipe.style.animation = 'none';
         pipe.style.left = `${pipePosition}px`;
 
-        mario.src = 'game-over.png';
+        mario.src = './imagens/game-over.png';
         mario.style.width = '100px';
         mario.style.marginLeft = '50px';
 
@@ -128,5 +130,3 @@ addGameControls(jump);
 
 // Clique do botão de Start / Reset
 startBtn.addEventListener('click', startGame);
-
-
