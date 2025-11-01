@@ -67,7 +67,7 @@ position: absolute;
 bottom: 0;
 width: 80px;
 display: none;
-animation: pipe_animation Xs 1.5s infinite linear; /*1.5s no script*/
+animation: pipe_animation Xs infinite linear; /*1.5s no script*/
 z-index: 1;
 }
 
@@ -109,6 +109,16 @@ animation: nuvem_animation 20s infinite linear;
     animation: fadeIn 1s ease forwards;
 
 }
+.name-game {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 500px;
+    z-index: 10;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translate(-50%, -40%); }
     to { opacity: 1; transform: translate(-50%, -50%); }
