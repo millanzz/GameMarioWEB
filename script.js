@@ -38,7 +38,7 @@ function startGame() {
     pipe.style.display = 'block'; // mostra o pipe
 
     // reseta mario
-    mario.src = './imagens/mario.gif';
+    mario.src = 'mario.gif';
     mario.style.width = '150px';
     mario.style.marginLeft = '0';
 
@@ -87,7 +87,7 @@ const loop = setInterval(() => {
         pipe.style.animation = 'none';
         pipe.style.left = `${pipePosition}px`;
 
-        mario.src = './imagens/game-over.png';
+        mario.src = 'game-over.png';
         mario.style.width = '100px';
         mario.style.marginLeft = '50px';
 
@@ -130,3 +130,4 @@ addGameControls(jump);
 
 // Clique do botão de Start / Reset
 startBtn.addEventListener('click', startGame);
+
