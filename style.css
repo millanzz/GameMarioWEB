@@ -67,7 +67,7 @@ position: absolute;
 bottom: 0;
 width: 80px;
 display: none;
-animation: pipe_animation Xs infinite linear; /*1.5s no script*/
+animation: pipe_animation Xs 1.5s infinite linear; /*1.5s no script*/
 z-index: 1;
 }
 
@@ -161,3 +161,4 @@ animation: nuvem_animation 20s infinite linear;
         right: 100%;
     }
 }
+
